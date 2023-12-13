@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+</head>
+<body>
+    <h1>Admin Page</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>username</th>
+                <th>email</th>
+				<th>password</th>
+                <!-- Add more table headers for other columns -->
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through the data and display it -->
+            <tr th:each="entity : ${employees}">
+                <td th:text="${entity.username}"></td>
+                <td th:text="${entity.email}"></td>
+				<td th:text="${entity.password}"></td>
+                <!-- Add more table cells for other columns -->
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
