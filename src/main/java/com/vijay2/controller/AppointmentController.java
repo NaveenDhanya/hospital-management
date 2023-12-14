@@ -14,16 +14,6 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
-//    private final AppointmentService appointmentService;
-//    // Constructor Injection
-//    public AppointmentController(AppointmentService appointmentService) {
-//        this.appointmentService = appointmentService;
-//    }
-//    @GetMapping("/bookappointment")
-//    public String showLoginForm() {
-//        return "booking.html"; // Return the login form view
-//}
-
     @PostMapping("/confirmAppointment")
     public String confirmAppointment(@ModelAttribute Appointment appointment) {
         appointmentService.saveAppointment(appointment);
