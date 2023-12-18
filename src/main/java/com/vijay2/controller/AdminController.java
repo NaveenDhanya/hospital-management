@@ -13,12 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
     @Autowired
     private AdminService adminService;
-
     @GetMapping("/adminlogin")
     public String showLoginForm() {
         return "login"; // Return the login form view
     }
-
     @PostMapping("/adminlogin")
     public String login(@RequestParam String username, @RequestParam String password) {
         // Find the user by username

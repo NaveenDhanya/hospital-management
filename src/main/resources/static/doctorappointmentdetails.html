@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Details</title>
+</head>
+<body>
+<h2>Appointment Details</h2>
+<table border="1" id="appointmentTable">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Doctor ID</th>
+        <th>Doctor Name</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Symptoms</th>
+    </tr>
+    </thead>
+    <tbody id="appointmentTableBody">
+    <!-- Data will be dynamically added here -->
+    </tbody>
+</table>
+
+<script>
+        // Fetch appointment data from the server
+        fetch('/getappointmentdetails')
+            .then(response => response.json())
+            .then(appointments => {
+                const tableBody = document.getElementById('appointmentTableBody');
+
+                // Loop through appointments and dynamically create rows
+                appointments.forEach(appointment => {
+                    const row = document.createElement('tr');
+
+                    // Create cells and set data
+                    Object.values(appointment).forEach(value => {
+                        const cell = document.createElement('td');
+                        cell.textContent = value;
+                        row.appendChild(cell);
+                    });
+
+                    // Append row to the table body
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Details</title>
+</head>
+<body>
+<h2>Appointment Details</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Doctor ID</th>
+        <th>Doctor Name</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Symptoms</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="appointment : ${getpatientdetails}">
+        <td th:text="${appointment.id}"></td>
+        <td th:text="${appointment.username}"></td>
+        <td th:text="${appointment.phonenumber}"></td>
+        <td th:text="${appointment.email}"></td>
+        <td th:text="${appointment.doctorid}"></td>
+        <td th:text="${appointment.doctorname}"></td>
+        <td th:text="${appointment.appointmentdate}"></td>
+        <td th:text="${appointment.appointmenttime}"></td>
+        <td th:text="${appointment.symptoms}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html> -->

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
-
 </head>
 <body>
    <header>
@@ -78,7 +78,6 @@
                                 </div>
                               </div>
                             </div>
-
                             <div class="row">
                               <div class="col">
                                 <div class="form-group">
@@ -86,12 +85,23 @@
                                   <input id="docid" class="form-control" type="text" name="Doctorid" placeholder="Doctor ID"/>
                                 </div>
                               </div>
-                              <div class="col">
+                        <!--      <div class="col">
                                 <div class="form-group">
-                                  <label>Doctor Name</label>
-                                  <input id="docname" class="form-control" type="text" name="Doctorname" placeholder="Doctor Name">
+                                <label for="doctorname">Doctor Name</label>
+                                  <select id="doctorname" name="doctorname" class="form-control">
+                                    <option value="">Select Doctor</option>
+                                  </select>
+
                                 </div>
+                              </div> -->
+                            <div class="col">
+                              <div class="form-group">
+                                <label for="doctorname">Doctor Name</label>
+                                <select id="doctorname" name="doctorname" class="form-control">
+                                  <option th:each="doctorName : ${desiredColumnValues}" th:value="${doctorName}" th:text="${doctorName}">Select Doctor</option>
+                                </select>
                               </div>
+                            </div>
                             </div>
 
                             <div class="row">
@@ -126,7 +136,6 @@
                           </div>
                         </div>
                       </form>
-    
                     </div>
                   </div>
                 </div>
@@ -138,5 +147,47 @@
     </div>
     </div>
    </section>
+
+  <!-- <script defer>
+       document.addEventListener('DOMContentLoaded', function() {
+        // Fetch data from the backend endpoint
+        fetch('/getDesiredColumnValues')
+            .then(response => response.json())
+            .then(data => {
+                // Get the select element
+                const selectElement = document.getElementById('doctorname');
+
+                // Populate the dropdown options
+                data.forEach(value => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = value;
+                    optionElement.text = value;
+                    selectElement.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+            });
+    </script> -->
+   <script defer>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fetch data from the backend endpoint
+            fetch('/getDesiredColumnValues')
+                .then(response => response.json())
+                .then(data => {
+                    // Get the select element
+                    const selectElement = document.getElementById('doctorname');
+
+                    // Populate the dropdown options using Thymeleaf
+                    data.forEach(value => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = value;
+                        optionElement.setAttribute('th:value', value);
+                        optionElement.setAttribute('th:text', value);
+                        selectElement.appendChild(optionElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        });
+    </script>
 </body>
 </html>

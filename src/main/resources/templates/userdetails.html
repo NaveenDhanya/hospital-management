@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Details</title>
+</head>
+<body>
+<h2>Appointment Details</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>email</th>
+        <th>password</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user: ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.password}"></td>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Appointment Details</title>
+</head>
+<body>
+<h2>Appointment Details</h2>
+<table border="1" id="appointmentTable">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>email</th>
+        <th>password</th>
+    </tr>
+    </thead>
+    <tbody id="userTableBody">
+    </tbody>
+</table>
+
+<script defer>
+        // Fetch appointment data from the server
+        fetch('/users')
+            .then(response => response.json())
+            .then(appointments => {
+                const tableBody = document.getElementById('userTableBody');
+
+                // Loop through appointments and dynamically create rows
+                appointments.forEach(appointment => {
+                    const row = document.createElement('tr');
+
+                    // Create cells and set data
+                    Object.values(appointment).forEach(value => {
+                        const cell = document.createElement('td');
+                        cell.textContent = value;
+                        row.appendChild(cell);
+                    });
+
+                    // Append row to the table body
+                    tableBody.appendChild(row);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+    </script>
+</body>
+</html>
+-->

@@ -1,14 +1,11 @@
 package com.vijay2.controller;
-
 import com.vijay2.model.Doctor;
 import com.vijay2.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @Controller
 public class DoctorController {
@@ -20,21 +17,25 @@ public class DoctorController {
         doctorService.saveDoctor(doctor);
         return "redirect:/signup-success.html"; // Redirect to the confirmation page
     }
-   @GetMapping("/doctorlogin")
-    public String showLoginForm() {
-        return "login"; // Return the login form view
-    }
+
     @PostMapping("/doctorlogin")
-    public String login(@RequestParam String username, @RequestParam String password) {
+    public String login(@RequestParam String email, @RequestParam String password) {
         // Find the user by username
-        Doctor doctor = doctorService.findByUsername(username);
+        Doctor doctor = doctorService.findByEmail(email);
 
         if (doctor != null && doctor.getPassword().equals(password)) {
-            return "redirect:/admindashboard.html";
+            return "redirect:/userdashboard.html";
         } else {
 
             return "redirect:/adminlogin?error";
         }
     }
 
+    @GetMapping("/getDesiredColumnValues")
+    public String getDesiredColumnValues(Model model) {
+        List<String> desiredColumnValues = doctorService.getDistinctColumnName();
+        model.addAttribute("desiredColumnValues", desiredColumnValues);
+        return "booking.html"; // Return the HTML page with the dropdown
+
+    }
 }
