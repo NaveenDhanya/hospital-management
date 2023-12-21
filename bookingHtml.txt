@@ -1,3 +1,5 @@
+booking.html file
+
 <!DOCTYPE html>
 <html lang="en">
 <html xmlns:th="http://www.thymeleaf.org">
@@ -87,8 +89,8 @@
                               </div>
                               <div class="col">
                                 <div class="form-group">
-                                <label for="doctorDropdown">Doctor Name</label>
-                                  <select id="doctorDropdown" name="doctorname" class="form-control">
+                                <label for="doctorname">Doctor Name</label>
+                                  <select id="doctorname" name="doctorname" class="form-control">
                                     <option value="">Select Doctor</option>
                                   </select>
 
@@ -147,22 +149,90 @@
     </div>
     </div>
    </section>
-   <script defer>
+
+  <!-- <script defer>
+       document.addEventListener('DOMContentLoaded', function() {
+        // Fetch data from the backend endpoint
+        fetch('/getDesiredColumnValues')
+            .then(response => response.json())
+            .then(data => {
+                // Get the select element
+                const selectElement = document.getElementById('doctorname');
+
+                // Populate the dropdown options
+                data.forEach(value => {
+                    const optionElement = document.createElement('option');
+                    optionElement.value = value;
+                    optionElement.text = value;
+                    selectElement.appendChild(optionElement);
+                });
+            })
+            .catch(error => console.error('Error fetching data:', error));
+            });
+    </script> -->
+  <script defer>
         document.addEventListener('DOMContentLoaded', function() {
-            // Fetch distinct doctor names from the server and populate the dropdown
-            fetch('/doctors')
+            // Fetch data from the backend endpoint
+            fetch('/togetdoctorcolumn')
                 .then(response => response.json())
-                .then(distinctNames => {
-                    const dropdown = document.getElementById('doctorDropdown');
-                    distinctNames.forEach(name => {
-                        const option = document.createElement('option');
-                        option.value = name;
-                        option.text = name;
-                        dropdown.appendChild(option);
+                .then(data => {
+                    // Get the select element
+                    const selectElement = document.getElementById('doctorname');
+
+                    // Populate the dropdown options using Thymeleaf
+                    data.forEach(value => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = value;
+                        optionElement.setAttribute('th:value', value);
+                        optionElement.setAttribute('th:text', value);
+                        selectElement.appendChild(optionElement);
                     });
                 })
-                .catch(error => console.error('Error fetching distinct doctor names:', error));
+                .catch(error => console.error('Error fetching data:', error));
         });
     </script>
 </body>
 </html>
+
+
+appointmentcontroller.java file
+package com.vijay2.controller;
+
+import com.vijay2.model.Appointment;
+import com.vijay2.model.User;
+import com.vijay2.service.AppointmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import java.util.List;
+
+@Controller
+public class AppointmentController {
+    @Autowired
+    private AppointmentService appointmentService;
+
+    @PostMapping("/confirmAppointment")
+    public String confirmAppointment(@ModelAttribute Appointment appointment) {
+        appointmentService.saveAppointment(appointment);
+        return "redirect:/signup-success.html"; // Redirect to the confirmation page
+    }
+    @Autowired
+    public AppointmentController(AppointmentService appointmentService) {
+        this.appointmentService = appointmentService;
+    }
+    @GetMapping("/togetdoctorcolumn")
+    public List<String> getDistinctDoctornames() {
+        return appointmentService.getDistinctDoctornames();
+
+    }
+/*    @GetMapping("/getappointmentdetails")
+    public String getAllAppointments(Model model) {
+        List<Appointment> appointments = appointmentService.getAllAppointments();
+        model.addAttribute("appointments", appointments);
+        return "doctorappointmentdetails.html";
+    } */
+}
+
+please check these files and suggest the solution to make it work and get the dropdown for the doctorname column

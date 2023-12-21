@@ -10,7 +10,9 @@ import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-    // Define custom queries or methods if needed
-  //  @Query("SELECT DISTINCT doctorname FROM Appointment")
-  // List<String> findDistinctColumnName();
+
+//    @Query("SELECT DISTINCT a.doctorname FROM Appointment a")
+//    List<String> getAllDoctornames();
+
+
 }

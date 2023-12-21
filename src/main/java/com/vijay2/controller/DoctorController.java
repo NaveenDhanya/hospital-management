@@ -11,7 +11,6 @@ import java.util.List;
 public class DoctorController {
     @Autowired
     private DoctorService doctorService;
-
     @PostMapping("/doctordetailsentry")
     public String confirmDoctor(@ModelAttribute Doctor doctor) {
         doctorService.saveDoctor(doctor);
@@ -19,6 +18,7 @@ public class DoctorController {
     }
 
     @PostMapping("/doctorlogin")
+
     public String login(@RequestParam String email, @RequestParam String password) {
         // Find the user by username
         Doctor doctor = doctorService.findByEmail(email);

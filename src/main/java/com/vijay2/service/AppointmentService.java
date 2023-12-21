@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface AppointmentService {
     void saveAppointment(Appointment appointment);
-    List<Appointment> getAllAppointments();
+ /*   List<Appointment> getAllAppointments(); */
+    List<String> getAllDoctornames();
 
 }
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -45,12 +46,26 @@ public class SignupController {
             return "redirect:/login?error";
         }
     }
-    @GetMapping("/users")
+    @Autowired
+    public SignupController(UserService userService) {
+        this.userService = userService;
+    }
+    @GetMapping("/somelogin")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+
+    }
+ /*   @RequestMapping("/")
     public String getAllUsers(Model model) {
         List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
         return "userdetails";
-    }
+      } */
 
 
+   /* @RequestMapping("/")
+    public String home(Model model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "userdetails";
+    } */
 }
