@@ -6,8 +6,9 @@ import java.util.List;
 
 public interface AppointmentService {
     void saveAppointment(Appointment appointment);
- /*   List<Appointment> getAllAppointments(); */
-    List<String> getAllDoctornames();
+    List<String> getAllDoctornames(); //for dropdown
+
+    List<Appointment> getAllAppointments(); //to show the db table in html
 
 }
 

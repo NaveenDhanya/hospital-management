@@ -24,7 +24,7 @@ public class DoctorController {
         Doctor doctor = doctorService.findByEmail(email);
 
         if (doctor != null && doctor.getPassword().equals(password)) {
-            return "redirect:/userdashboard.html";
+            return "redirect:/doctordashboard.html";
         } else {
 
             return "redirect:/adminlogin?error";

@@ -17,14 +17,11 @@ import java.util.List;
 public class SignupController {
     @Autowired
     private UserService userService;
-    @Autowired
-    private JavaMailSender javaMailSender;
 
 	@GetMapping("/")
 	public String home() {
 		return "dashboard.html";
 	}
-
     @PostMapping("/signup")
     public String signup(User user) {
         userService.saveUser(user);
