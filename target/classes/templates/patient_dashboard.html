@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Dashboard</title>
+   <link rel="stylesheet" href="styles/patientdashboard.css">
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+   <style>
+    /* Custom styles for the logout link */
+	    .nav-item {
+        margin-right: 10px; /* Add right margin between each nav-item (button) */
+    }
+    .nav-item a.nav-link {
+        font-size: 18px; /* Adjust the font size as needed */
+        color: white; /* Set the text color to white */
+        padding: 8px 16px; /* Adjust padding for space around the link text */
+        border: 1px solid red; /* Add a 1px solid red border */
+        border-radius: 5px; /* Add a border radius for rounded corners */
+        background-color: gray; /* Set the background color to red */
+        text-decoration: none; /* Remove default link underline */
+        transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+    }
+
+    /* Hover effect */
+    .nav-item a.nav-link:hover {
+        background-color: white; /* Change background color on hover */
+    }
+</style>
+ </head>
+ <body>
+  <header id="home">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top" style="font-family: 'Poppins', sans-serif;">
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+     </button>
+     <a class="navbar-brand text-capitalize" href="#">
+         <img src="static/images/register.jpg" width="40" height="40" alt="" loading="lazy" class="mr-2">
+         Patient Dashboard
+     </a>
+
+     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <!-- Navbar content -->
+     </div>
+
+     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav mx-auto">
+             <li class="nav-item active">
+                 <a class="nav-link" href="/homepage">Home</a>
+             </li>
+             <li class="nav-item active">
+                 <a class="nav-link" href="/appointmentbooking">Book Appointment</a>
+             </li>
+			 <li class="nav-item active">
+                 <a class="nav-link" href="/appointmentstatus">Appointment Status</a>
+             </li>
+             </li>
+			 <li class="nav-item active" >
+                 <a class="nav-link" href="/patient_login">Logout</a>
+             </li>
+         </ul>
+     </div>
+  </nav>
+   <div class="post-container">
+     <div class="post-thumb" style="text-align:center"><img src="static/images/doc.png" alt ="img1" width= "700" height="410"/></div>
+     <div class="post-content">
+         <h4 class="post-title" th:text="'Welcome '+${email}"></h4>
+         <p class="post-para" style="text-align:center; font-size:22px; margin-top:100">We are there for you. If you are feeling unwell, then you need a check-up. Book an appointment with an appropriate doctor here.</p>
+    </div>
+    </div>
+   </div>
+ </header>
+</body>
+</html>

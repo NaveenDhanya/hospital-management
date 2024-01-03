@@ -10,7 +10,8 @@ import java.util.List;
 
 @Repository
 public interface AppointmentRepository extends JpaRepository<Appointment, Long> {
-
+    boolean existsByUsername(String username);
+    boolean existsByEmail(String email);
 //    @Query("SELECT DISTINCT a.doctorname FROM Appointment a")
 //    List<String> getAllDoctornames();
 

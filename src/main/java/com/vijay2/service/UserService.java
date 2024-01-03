@@ -6,7 +6,13 @@ import com.vijay2.model.User;
 import java.util.List;
 
 public interface UserService {
-    User saveUser(User user);
+
+    boolean isUsernameExists(String username);
+    boolean isEmailExists(String email);
+    void createUser(String username, String email, String password);
     User findByUsername(String username);
-    List<User> getAllUsers();
+    /*
+    User saveUser(User user);
+
+    List<User> getAllUsers(); */
 }
