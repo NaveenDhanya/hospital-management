@@ -17,7 +17,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand text-capitalize" href="#">
-            <img src="static/images/register.jpg" width="40" height="40" alt="logo" loading="lazy" class="mr-2">
+            <img src="images/img7.jpg" width="40" height="40" alt="logo" loading="lazy" class="mr-2">
             Add Doctor details</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -80,12 +80,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="row">
-                                                            <!--   <div class="col">
-                                                                   <div class="form-group">
-                                                                       <label>Doctor ID</label>
-                                                                       <input id="Doctorid" class="form-control" type="tel" name="doctorid" placeholder="Doctor ID"/>
-                                                                   </div>
-                                                               </div> -->
+
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Specialization</label>
@@ -113,33 +108,40 @@
     </div>
 </section>
 <script>
+function validateForm() {
+    const doctorname = document.getElementById('doctorname').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const phoneNumber = document.getElementById('phonenumber').value;
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
 
-        function validateForm() {
-            const doctorname = document.getElementById('doctorname').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+    if (!/^[A-Za-z]+$/.test(doctorname)) {
+        alert('Username should contain alphabetic characters only.');
+        return false;
+    }
 
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return false;
+    }
 
-            if (!/^[A-Za-z]+$/.test(doctorname)) {
-                alert('Username should contain alphabetic characters only.');
-                return false;
-            }
+    if (!passwordRegex.test(password)) {
+        alert('Password should be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one number, and one special character.');
+        return false;
+    }
 
-            if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address.');
-                return false;
-            }
+    // Regex for phone number: Should start with 7, 8, or 9 and be exactly 10 digits
+    const phoneRegex = /^[789]\d{9}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+        alert('Please enter a valid phone number starting with 7, 8, or 9 and containing exactly 10 digits.');
+        return false;
+    }
 
-            if (!passwordRegex.test(password)) {
-                alert('Password should be at least 8 characters long and include at least one lowercase letter, one uppercase letter, one number, and one special character.');
-                return false;
-            }
+    return true;
+}
 
-            return true;
-        }
-    </script>
+</script>
 </body>
 </html>

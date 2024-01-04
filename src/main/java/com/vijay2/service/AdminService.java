@@ -4,7 +4,8 @@ import com.vijay2.model.Admin;
 
 
 public interface AdminService {
-    void saveAdmin(Admin admin);
+//    void saveAdmin(Admin admin);
 
     Admin findByUsername(String username);
+
 }

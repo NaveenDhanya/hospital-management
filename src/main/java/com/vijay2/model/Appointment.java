@@ -15,18 +15,15 @@ public class Appointment {
     private String username;
     public String getUsername() {return username;}
     public void setUsername(String username) {this.username = username;}
-    private String phonenumber;
-    public String getPhonenumber() {return phonenumber;}
-    public void setPhonenumber(String phonenumber) {this.phonenumber = phonenumber;}
     private String email;
     public String getEmail() {return email;}
     public void setEmail(String email) {this.email = email;}
-    private String doctorid;
-    public String getDoctorid() {return doctorid;}
-    public void setDoctorid(String doctorid) {this.doctorid = doctorid;}
-    private String doctorname;
-    public String getDoctorname() {return doctorname;}
-    public void setDoctorname(String doctorname) {this.doctorname = doctorname;}
+    private String phonenumber;
+    public String getPhonenumber() {return phonenumber;}
+    public void setPhonenumber(String phonenumber) {this.phonenumber = phonenumber;}
+    private String specialization;
+    public String getSpecialization() {return specialization;}
+    public void setSpecialization(String specialization) {this.specialization = specialization;}
     private String appointmentdate;
     public String getAppointmentdate() {return appointmentdate;}
     public void setAppointmentdate(String appointmentdate) {this.appointmentdate = appointmentdate;}

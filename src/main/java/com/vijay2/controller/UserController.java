@@ -81,56 +81,8 @@ public class UserController {
         return "patient_dashboard.html"; // Assuming you have a success.html page
     }
 
-
-
-
-
-@GetMapping("/admin_login")
-    public String adminlogin() {
-        return "admin_login.html";
-    }
-
-    @GetMapping("/doctor_login")
-    public String doctorlogin() {
-        return "doctor_login.html";
+    @GetMapping("/emergency")
+    public String emergency() {
+        return "emergency_helpline.html";
     }
 }
-
-
-
-/*
-	@GetMapping("/")
-	public String home() {
-		return "dashboard.html";
-	}
-    @PostMapping("/signup")
-    public String signup(User user) {
-        userService.saveUser(user);
-        return "redirect:/signup-success.html"; // Redirect to the login page after successful signup
-    }
-    @GetMapping("/patientlogin")
-    public String showLoginForm() {
-        return "login"; // Return the login form view
-    }
-    @PostMapping("/patientlogin")
-    public String login(@RequestParam String username, @RequestParam String password) {
-        // Find the user by username
-        User user = userService.findByUsername(username);
-
-        if (user != null && user.getPassword().equals(password)) {
-            return "redirect:/patientdashboard.html";
-        } else {
-
-            return "redirect:/login?error";
-        }
-    }
-    @Autowired
-    public SignupController(UserService userService) {
-        this.userService = userService;
-    }
-    @GetMapping("/somelogin")
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
-
-    }*/
-

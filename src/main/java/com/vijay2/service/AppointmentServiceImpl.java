@@ -19,6 +19,9 @@ public class AppointmentServiceImpl implements AppointmentService {
     public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
         this.appointmentRepository = appointmentRepository;
     }
+
+    @Override
+    public List<Appointment> getAllAppointments() {return appointmentRepository.findAll();}
     @Override
     public boolean isUsernameExists(String username) {
         return appointmentRepository.existsByUsername(username);
@@ -33,36 +36,11 @@ public class AppointmentServiceImpl implements AppointmentService {
         newAppointment.setUsername(username);
         newAppointment.setEmail(email);
         newAppointment.setPhonenumber(phonenumber);
- //       newAppointment.setSpecialization(specialization);
+        newAppointment.setSpecialization(specialization);
         newAppointment.setAppointmentdate(appointmentdate);
         newAppointment.setAppointmenttime(appointmenttime);
         newAppointment.setSymptoms(symptoms);
         appointmentRepository.save(newAppointment);
     }
 
-    /*    @Autowired
-    private AppointmentRepository appointmentRepository;
-
-    @Autowired
-    public AppointmentServiceImpl(AppointmentRepository appointmentRepository) {
-        this.appointmentRepository = appointmentRepository;
-    }
-    @Override
-    @Transactional
-    public void saveAppointment(Appointment appointment) {
-        appointmentRepository.save(appointment);
-    }
-
-    //below config is to get the dropdown
-    @Override
-    public List<String> getAllDoctornames() {
-        return appointmentRepository.findAll().stream()
-                .map(Appointment::getDoctorname)
-                .collect(Collectors.toList());
-    }
-    //below config is to show the db table in the doctor appointments
-    @Override
-    public List<Appointment> getAllAppointments() {
-        return appointmentRepository.findAll();
-    }*/
 }

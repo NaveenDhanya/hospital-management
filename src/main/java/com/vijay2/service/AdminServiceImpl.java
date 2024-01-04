@@ -1,6 +1,7 @@
 package com.vijay2.service;
 
 import com.vijay2.model.Admin;
+import com.vijay2.model.Appointment;
 import com.vijay2.repository.AdminRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,14 +15,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    @Transactional
-    public void saveAdmin(Admin admin) {
-        adminRepository.save(admin);
-    }
-    @Override
     public Admin findByUsername(String username) {
         return adminRepository.findByUsername(username);
     }
+
+
+
 
 }
 

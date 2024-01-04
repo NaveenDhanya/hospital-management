@@ -3,50 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointments List</title>
+    <title>Appointment Status</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+h2 {
+    color: #333;
+}
+
+#appointmentsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#appointmentsTable th, #appointmentsTable td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+#appointmentsTable th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#appointmentsBody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+    </style>
 </head>
 <body>
-    <h1>Appointments List</h1>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Username</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-				<th>Appointment Date</th>
-				<th>Appointment Time</th>
-				<th>Symptoms</th>
-				<th>Status</th>
-                <th>Action</th>
-                <!-- Add other appointment fields here -->
-            </tr>
-        </thead>
-		
-        <tbody>
-            {% for appointment in appointments %}
-            <tr>
-                <td>{{ appointment[0] }}</td>  <!-- Assuming the first column is ID -->
-                <td>{{ appointment[1] }}</td>  <!-- Assuming the second column is Patient Name -->
-                <td>{{ appointment[2] }}</td>  <!-- Assuming the third column is Doctor Name -->
-                <td>{{ appointment[3] }}</td>  <!-- Assuming the fourth column is Date -->
-				<td>{{ appointment[4] }}</td>
-	            <td>{{ appointment[5] }}</td>
-		        <td>{{ appointment[6] }}</td>
-	            <td>{{ appointment[7] }}</td>
-				<td>{{ appointment[8] }}</td>
+<h2>Appointment Status</h2>
 
-				<td>
-                    {% if appointment[8] != 'Approved' and appointment[8] != 'Declined' %}
-                        <a href="{{ url_for('approve_appointment', appointment_id=appointment[0]) }}">Approve</a>
-                        <a href="{{ url_for('decline_appointment', appointment_id=appointment[0]) }}">Decline</a>
-                    {% else %}
-                        N/A
-                    {% endif %}
-                </td>
-                <!-- Add other appointment fields here -->
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<table border="1" id="appointmentsTable">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Specialization</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Symptoms</th>
+    </tr>
+    </thead>
+    <tbody id="appointmentsBody">
+    <!-- Dynamic data will be loaded here -->
+    </tbody>
+</table>
+
+<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "/getappointments");
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var appointments = JSON.parse(xhr.responseText);
+                        displayAppointments(appointments);
+                    } else {
+                        console.error("Error fetching appointments. Status: " + xhr.status);
+                    }
+                }
+            };
+
+            xhr.send();
+        });
+
+        function displayAppointments(appointments) {
+            var tableBody = document.getElementById("appointmentsBody");
+
+            // Clear existing rows
+            tableBody.innerHTML = "";
+
+            // Add new rows based on fetched data
+            appointments.forEach(function(appointment) {
+                var row = tableBody.insertRow();
+                createCell(row, appointment.username);
+                createCell(row, appointment.phoneNumber);
+                createCell(row, appointment.email);
+                createCell(row, appointment.specialization);
+                createCell(row, appointment.appointmentDate);
+                createCell(row, appointment.appointmentTime);
+                createCell(row, appointment.symptoms);
+            });
+
+            // Add a button at the end of the page
+            var backButton = document.createElement("button");
+            backButton.textContent = "Go Back";
+            backButton.addEventListener("click", function() {
+                // You can customize the action when the button is clicked
+                window.history.back();
+            });
+
+            document.body.appendChild(backButton);
+        }
+
+        function createCell(row, content) {
+            var cell = row.insertCell();
+            cell.textContent = content;
+        }
+    </script>
 </body>
 </html>

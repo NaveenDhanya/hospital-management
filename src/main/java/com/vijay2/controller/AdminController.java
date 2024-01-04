@@ -4,6 +4,7 @@ import com.vijay2.model.Admin;
 import com.vijay2.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,27 +14,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
     @Autowired
     private AdminService adminService;
-    @GetMapping("/adminlogin")
+    @GetMapping("/admin_login")
     public String showLoginForm() {
-        return "login"; // Return the login form view
+        return "admin_login.html"; // Return the login form view
     }
-    @PostMapping("/adminlogin")
+    @PostMapping("/adminloginverify")
     public String login(@RequestParam String username, @RequestParam String password) {
         // Find the user by username
         Admin admin = adminService.findByUsername(username);
 
         if (admin != null && admin.getPassword().equals(password)) {
-            return "redirect:/admindashboard.html";
+            return "redirect:/admindashboard";
         } else {
 
             return "redirect:/adminlogin?error";
         }
     }
-
-    @PostMapping("/doctorDetails")
-    public String confirmAdmin(@ModelAttribute Admin admin) {
-        adminService.saveAdmin(admin);
-        return "redirect:/signup-success.html"; // Redirect to the confirmation page
+    @GetMapping("/admindashboard")
+    public String admindashboard() {
+        return "admin_dashboard.html";
+    }
+    @GetMapping("/adddoctordetails")
+    public String adddoctordetails() {
+        return "adddoctordetails.html";
+    }
+    @GetMapping("/getappointmentdetails")
+    public String getappointmentdetails() {
+        return "appointments_list_admin.html";
     }
 
 }

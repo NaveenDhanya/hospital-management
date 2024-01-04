@@ -74,7 +74,7 @@
 
                   <div class="tab-content pt-3">
                     <div class="tab-pane active">
-                      <form class="form" action="/confirmppointment" method="post" novalidate="">
+                      <form class="form" action="/confirmappointment" method="post" novalidate="">
                         <div class="row">
                           <div class="col">
                             <div class="row">
@@ -107,36 +107,9 @@
 								  <option value="Cardiac - Vijay" selected>Cardiac</option>
 								  <option value="Neurogist - Dhanya">Neurologist</option>
 								  </select>
-                                <!--  <input id="specialization" class="form-control" type="text" name="specialization" placeholder="Specialization" required> -->
                                 </div>
                               </div>
                             </div>
-                        <!--    <div class="row">
-                              <div class="col">
-                                <div class="form-group">
-                                  <label>Doctor ID</label>
-                                  <input id="doctorid" class="form-control" type="text" name="doctorid" placeholder="Doctor ID"/>
-                                </div>
-                              </div>
-                              <div class="col">
-                                <div class="form-group">
-                                <label for="doctorname">Doctor Name</label>
-                                  <select id="doctorname" name="doctorname" class="form-control">
-                                    <option value="">Select Doctor</option>
-                                  </select>
-
-                                </div>
-                              </div>  -->
-							  
-<!--                            <div class="col">
-                              <div class="form-group">
-                                <label for="doctorname">Doctor Name</label>
-                                <select id="doctorname" name="doctorname" class="form-control">
-                                  <option th:each="doctorName : ${desiredColumnValues}" th:value="${doctorName}" th:text="${doctorName}">Select Doctor</option>
-                                </select>
-                              </div>
-                            </div> -->
-                      <!--      </div> -->
 
                             <div class="row">
                               <div class="col">
@@ -148,7 +121,6 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label>Appointment Time</label>
-                 <!--                 <input id="appointmenttime" class="form-control" type="time" name="appointmenttime" placeholder="Appointment Time" required> -->
 									<select id="appointmenttime" class="form-control" type="time" name="appointmenttime" placeholder="Appointment Time" required>
 									<option value="" selected disabled>Select Appointment Time</option>
 									</select>
@@ -184,8 +156,80 @@
     </div>
     </div>
    </section>
-
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const today = new Date();
+    const tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1); // Adding 1 day to the current date
+
+    const dd = String(tomorrow.getDate()).padStart(2, '0');
+    const mm = String(tomorrow.getMonth() + 1).padStart(2, '0'); // January is 0!
+    const yyyy = tomorrow.getFullYear();
+
+    const tomorrowFormatted = `${yyyy}-${mm}-${dd}`;
+
+    document.getElementById('appointmentdate').setAttribute('min', today.toISOString().split('T')[0]);
+    document.getElementById('appointmentdate').setAttribute('max', tomorrowFormatted);
+
+    const appointmentTimeSelect = document.getElementById('appointmenttime');
+
+    // Generating time slots from 9:00 AM to 5:00 PM at hourly intervals
+    for (let hour = 9; hour <= 17; hour++) {
+        const option = document.createElement('option');
+        const time = `${String(hour).padStart(2, '0')}:00`;
+        option.text = time;
+        option.value = time;
+        appointmentTimeSelect.add(option);
+    }
+
+    // Add event listener to the form submission to perform validation
+    document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+        // Get values from the form
+        const username = document.getElementById('username').value;
+        const phonenumber = document.getElementById('phonenumber').value;
+        const email = document.getElementById('email').value;
+
+        // Perform validation
+        if (!isValidUsername(username)) {
+            alert('Invalid username format');
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+
+        if (!isValidPhoneNumber(phonenumber)) {
+            alert('Invalid phone number format');
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            alert('Invalid email format');
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
+    });
+});
+
+function isValidUsername(username) {
+    // Regex for username: Only allow alphabets
+    const usernameRegex = /^[a-zA-Z]+$/;
+    return usernameRegex.test(username);
+}
+
+function isValidPhoneNumber(phoneNumber) {
+    // Regex for phone number: Should start with 7, 8, or 9 and be exactly 10 digits
+    const phoneRegex = /^[789]\d{9}$/;
+    return phoneRegex.test(phoneNumber);
+}
+
+function isValidEmail(email) {
+    // Regex for email: Should follow "user@example.com" format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+</script>
+<!--<script>
     document.addEventListener('DOMContentLoaded', function() {
         const today = new Date();
         const tomorrow = new Date(today);
@@ -211,6 +255,7 @@
             appointmentTimeSelect.add(option);
         }
     });
-</script>
+</script> -->
+
 </body>
 </html>
