@@ -32,4 +32,8 @@ public class DoctorServiceImpl implements DoctorService {
         newDoctor.setSpecialization(specialization);
         doctorRepository.save(newDoctor);
     }
+    @Override
+    public Doctor findByEmail(String email) {
+        return doctorRepository.findByEmail(email);
+    }
 }

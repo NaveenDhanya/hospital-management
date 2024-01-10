@@ -22,6 +22,7 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Override
     public List<Appointment> getAllAppointments() {return appointmentRepository.findAll();}
+
     @Override
     public boolean isUsernameExists(String username) {
         return appointmentRepository.existsByUsername(username);
@@ -31,7 +32,7 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.existsByEmail(email);
     }
     @Override
-    public void createAppointment(String username, String email, String phonenumber, String specialization, String appointmentdate,String appointmenttime, String symptoms) {
+    public void createAppointment(String username, String email, Long phonenumber, String specialization, LocalDate appointmentdate,LocalTime appointmenttime, String symptoms) {
         Appointment newAppointment = new Appointment();
         newAppointment.setUsername(username);
         newAppointment.setEmail(email);

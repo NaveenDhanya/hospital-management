@@ -1,4 +1,5 @@
 package com.vijay2.controller;
+import com.vijay2.model.Admin;
 import com.vijay2.model.Doctor;
 import com.vijay2.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,30 @@ public class DoctorController {
         // If username and email are unique, create a new user using UserService
         doctorService.createDoctor(doctorname, email, password, phonenumber, specialization);
         return "redirect:/success";
+    }
+    @PostMapping("/doctorverify")
+    public String login(@RequestParam String email, @RequestParam String password) {
+        // Find the user by username
+        Doctor doctor = doctorService.findByEmail(email);
+
+        if (doctor != null && doctor.getPassword().equals(password)) {
+            return "redirect:/doctordashboard";
+        } else {
+
+            return "redirect:/doctor_error_login";
+        }
+    }
+    @GetMapping("/doctor_error_login")
+    public String doctor_error_login() {
+        return "doctor_error_login.html";
+    }
+    @GetMapping("/homepage")
+    public String homepage() {
+        return "main_dashboard.html";
+    }
+    @GetMapping("/doctordashboard")
+    public String doctordashboard() {
+        return "doctor_dashboard.html";
     }
     @GetMapping("/doctor_login")
     public String doctorlogin() {

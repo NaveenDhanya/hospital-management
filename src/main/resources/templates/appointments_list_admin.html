@@ -101,10 +101,10 @@ button:hover {
                 var row = tableBody.insertRow();
                 createCell(row, appointment.username);
 				createCell(row, appointment.email);
-                createCell(row, appointment.phoneNumber);
+                createCell(row, appointment.phonenumber);
                 createCell(row, appointment.specialization);
-                createCell(row, appointment.appointmentDate);
-                createCell(row, appointment.appointmentTime);
+                createCell(row, appointment.appointmentdate);
+                createCell(row, appointment.appointmenttime);
                 createCell(row, appointment.symptoms);
             });
 
@@ -121,7 +121,24 @@ button:hover {
 
         function createCell(row, content) {
             var cell = row.insertCell();
-            cell.textContent = content;
+
+             if (content && typeof content === 'number') {
+                // Assuming phoneNumber is a 10-digit number
+                var phonenumber = content.toString();
+                var formattedPhoneNumber = '(' + phonenumber.substring(0, 3) + ') ' + phonenumber.substring(3, 6) + '-' + phonenumber.substring(6);
+                cell.textContent = formattedPhoneNumber;
+            } else if (content && typeof content === 'string') {
+                // Assuming appointmentDate is in YYYY-MM-DD format
+                if (content.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                    var formattedDate = new Date(content).toLocaleDateString('en-US');
+                    cell.textContent = formattedDate;
+                } else {
+                    cell.textContent = content;
+                }
+            } else {
+                cell.textContent = content;
+            }
+            //cell.textContent = content;
         }
     </script>
 </body>

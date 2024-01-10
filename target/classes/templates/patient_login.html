@@ -17,8 +17,8 @@
 							<h4 class="card-title">Patient's Login</h4>
 							<form action="/patientloginverify" method="POST" class="my-login-validation" novalidate="">
 								<div class="form-group">
-									<label for="email">User Name</label>
-									<input id="username" type="username" class="form-control"  name="username" maxLength="20" value="" required autofocus>
+									<label for="username">User Name</label>
+									<input id="username" type="username" class="form-control"  name="username" onkeydown="return/[a-zA-Z space]/i.test(event.key)" maxLength="20" value="" required autofocus>
 									<div class="invalid-feedback">
 										Username is invalid
 									</div>
@@ -31,6 +31,7 @@
 								    <div class="invalid-feedback">
 								    	Password is required
 							    	</div>
+
 								</div>
 								<div class="form-group m-0">
 									<button type="submit" class="btn btn-primary btn-block">

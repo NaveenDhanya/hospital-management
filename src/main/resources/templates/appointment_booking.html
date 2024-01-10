@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/31149d48b0.js" crossorigin="anonymous"></script>
 	
  <style>
     /* Custom styles for the logout link */
@@ -88,7 +90,7 @@
                               <div class="col">
                                 <div class="form-group">
                                   <label>Phone Number</label>
-                                  <input id="phonenumber" class="form-control" type="phonenumber" name="phonenumber" placeholder="Phone Number" maxLength="10" required><!--onkeypress="allowOnlyNumbers(event)"-->
+                                  <input id="phonenumber" class="form-control" type="phonenumber" name="phonenumber" placeholder="Phone Number" onkeydown="return/[0-9 space]/i.test(event.key)" maxLength="10" required><!--onkeypress="allowOnlyNumbers(event)"-->
                                 </div>
                               </div>
                             </div>
@@ -141,7 +143,8 @@
                         </div>
                         <div class="row">
                           <div class="col d-flex justify-content-end">
-                            <button class="btn btn-primary" type="submit">Confirm Appointment</button>
+                              <!--class="btn btn-primary"-->
+                            <button type="submit" class="btn btn-success mt-3" >Confirm Appointment</button>
                           </div>
                         </div>
                       </form>
@@ -188,7 +191,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const username = document.getElementById('username').value;
         const phonenumber = document.getElementById('phonenumber').value;
         const email = document.getElementById('email').value;
+        //vijay
+        const appointmentdate = document.getElementById('appointmentdate').value;
+        const appointmenttime = document.getElementById('appointmenttime').value;
+        const symptoms = document.getElementById('symptoms').value;
 
+        if (!username || !phonenumber || !email || !appointmentdate || !appointmenttime || !symptoms) {
+            alert('Please fill in all fields');
+            event.preventDefault(); // Prevent form submission
+            return;
+        }
         // Perform validation
         if (!isValidUsername(username)) {
             alert('Invalid username format');
@@ -209,6 +221,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+          //new
+function validateForm() {
+  var username = document.getElementById('username').value;
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+
+  // Check if any field is empty
+  if (username.trim() === '' || email.trim() === '' || password.trim() === '') {
+    alert('Please fill in all fields');
+    return false; // Prevent form submission
+  }
+
+  // Additional checks or validations can be added here
+
+  return true; // Allow form submission if all fields are not empty
+}
+
 
 function isValidUsername(username) {
     // Regex for username: Only allow alphabets
@@ -227,6 +256,7 @@ function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
+
 
 </script>
 <!--<script>

@@ -8,4 +8,4 @@ public class Vijay2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(Vijay2Application.class, args);
 	}
-}
+ }

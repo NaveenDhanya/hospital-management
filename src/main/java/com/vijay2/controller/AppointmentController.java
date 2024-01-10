@@ -19,11 +19,18 @@ public class AppointmentController {
     @Autowired
     private AppointmentService appointmentService;
 
+    @GetMapping("/admin_reply")
+    public String admin_reply() {
+        return "admin_reply.html";
+    }
     @GetMapping("/appointmentbooking")
     public String appointmentbooking() {
         return "appointment_booking.html";
     }
-
+    @GetMapping("/confirmappointment")
+    public String confirmappointment() {
+        return "appointment_booking.html";
+    }
     @GetMapping("/appointmentstatus")
     public String appointmentstatus() {
         return "appointments_list.html";
@@ -41,10 +48,10 @@ public class AppointmentController {
     @PostMapping("/confirmappointment")
     public String confirmappointment(@RequestParam("username") String username,
 						 @RequestParam("email") String email,
-                         @RequestParam("phonenumber") String phonenumber,
+                         @RequestParam("phonenumber") Long phonenumber,
                          @RequestParam("specialization") String specialization,
-                         @RequestParam("appointmentdate") String appointmentdate,
-                         @RequestParam("appointmenttime") String appointmenttime,
+                         @RequestParam("appointmentdate") LocalDate appointmentdate,
+                         @RequestParam("appointmenttime") LocalTime appointmenttime,
                          @RequestParam("symptoms") String symptoms,
                          Model model) {
         // Check if username or email already exists in the database using UserService
@@ -57,7 +64,13 @@ public class AppointmentController {
             return "error_signup"; // Redirect back to signup page with an error message
         }
         // If username and email are unique, create a new user using UserService
-        appointmentService.createAppointment(username, email, phonenumber, specialization, appointmentdate, appointmenttime, symptoms);
-        return "redirect:/success";
+      //  appointmentService.createAppointment(username, email, phonenumber, specialization, appointmentdate, appointmenttime, symptoms);
+        // If username and email are unique, attempt to create a new appointment using AppointmentService
+
+       appointmentService.createAppointment(username, email, phonenumber, specialization, appointmentdate, appointmenttime, symptoms);
+
+        return "redirect:/admin_reply";
+
     }
+
 }

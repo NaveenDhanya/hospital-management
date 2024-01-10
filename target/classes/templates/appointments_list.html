@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Appointment Status</title>
-    <style>
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Appointment Status</title>
+        <style>
         body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -51,15 +52,14 @@ button:hover {
 }
 
     </style>
-</head>
+    </head>
 <body>
 <h2>Appointment Status</h2>
-
 <table border="1" id="appointmentsTable">
     <thead>
     <tr>
         <th>Username</th>
-        <th>Phone Number</th>
+        <!--<th>Phone Number</th> -->
         <th>Email</th>
         <th>Specialization</th>
         <th>Appointment Date</th>
@@ -71,7 +71,6 @@ button:hover {
     <!-- Dynamic data will be loaded here -->
     </tbody>
 </table>
-
 <script>
         document.addEventListener("DOMContentLoaded", function() {
             var xhr = new XMLHttpRequest();
@@ -101,15 +100,14 @@ button:hover {
             appointments.forEach(function(appointment) {
                 var row = tableBody.insertRow();
                 createCell(row, appointment.username);
-                createCell(row, appointment.phoneNumber);
+             //   createCell(row, appointment.phonenumber);
                 createCell(row, appointment.email);
                 createCell(row, appointment.specialization);
-                createCell(row, appointment.appointmentDate);
-                createCell(row, appointment.appointmentTime);
+                createCell(row, appointment.appointmentdate);
+                createCell(row, appointment.appointmenttime);
                 createCell(row, appointment.symptoms);
             });
-
-            // Add a button at the end of the page
+                        // Add a button at the end of the page
             var backButton = document.createElement("button");
             backButton.textContent = "Go Back";
             backButton.addEventListener("click", function() {
@@ -118,11 +116,28 @@ button:hover {
             });
 
             document.body.appendChild(backButton);
+
         }
 
         function createCell(row, content) {
             var cell = row.insertCell();
-            cell.textContent = content;
+
+            if (content && typeof content === 'number') {
+                // Assuming phoneNumber is a 10-digit number
+                var phonenumber = content.toString();
+                var formattedPhoneNumber = '(' + phonenumber.substring(0, 3) + ') ' + phonenumber.substring(3, 6) + '-' + phonenumber.substring(6);
+                cell.textContent = formattedPhoneNumber;
+            } else if (content && typeof content === 'string') {
+                // Assuming appointmentDate is in YYYY-MM-DD format
+                if (content.match(/^\d{4}-\d{2}-\d{2}$/)) {
+                    var formattedDate = new Date(content).toLocaleDateString('en-US');
+                    cell.textContent = formattedDate;
+                } else {
+                    cell.textContent = content;
+                }
+            } else {
+                cell.textContent = content;
+            }
         }
     </script>
 </body>

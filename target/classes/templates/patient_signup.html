@@ -97,7 +97,7 @@
   <form id="signupForm" action="/patientsignupverify" method="post" onsubmit="return validateForm()">
     <div>
       <label for="username">Username:</label>
-      <input type="text" id="username" name="username" maxLength="20" required>
+      <input type="text" id="username" name="username" maxLength="20" onkeydown="return/[a-zA-Z space]/i.test(event.key)" required>
     </div>
     <div>
       <label for="email">Email:</label>

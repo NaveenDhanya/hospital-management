@@ -18,6 +18,10 @@ public class AdminController {
     public String showLoginForm() {
         return "admin_login.html"; // Return the login form view
     }
+    @GetMapping("/admin_error_login")
+    public String admin_error_login() {
+        return "admin_error_login.html";
+    }
     @PostMapping("/adminloginverify")
     public String login(@RequestParam String username, @RequestParam String password) {
         // Find the user by username
@@ -27,7 +31,7 @@ public class AdminController {
             return "redirect:/admindashboard";
         } else {
 
-            return "redirect:/adminlogin?error";
+            return "redirect:/admin_error_login";
         }
     }
     @GetMapping("/admindashboard")
