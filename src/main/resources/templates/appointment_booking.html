@@ -108,6 +108,7 @@
 								  <option value="ENT - Naveen">ENT</option>
 								  <option value="Cardiac - Vijay" selected>Cardiac</option>
 								  <option value="Neurogist - Dhanya">Neurologist</option>
+                                      <option value="Dentist - Indhu">Dentist</option>
 								  </select>
                                 </div>
                               </div>
@@ -186,7 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Add event listener to the form submission to perform validation
-    document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+    //document.getElementById('appointmentForm').addEventListener('submit', function(event) {
+        document.querySelector('form').addEventListener('submit', function(event) {
         // Get values from the form
         const username = document.getElementById('username').value;
         const phonenumber = document.getElementById('phonenumber').value;

@@ -7,7 +7,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <style>
+    /* Custom styles for the logout link */
+	    .nav-item {
+        margin-right: 10px; /* Add right margin between each nav-item (button) */
+    }
+    .nav-item a.nav-link {
+        font-size: 18px; /* Adjust the font size as needed */
+        color: white; /* Set the text color to white */
+        padding: 8px 16px; /* Adjust padding for space around the link text */
+        border: 1px solid red; /* Add a 1px solid red border */
+        border-radius: 5px; /* Add a border radius for rounded corners */
+        background-color: gray; /* Set the background color to red */
+        text-decoration: none; /* Remove default link underline */
+        transition: background-color 0.3s ease; /* Add transition for smooth hover effect */
+    }
 
+    /* Hover effect */
+    .nav-item a.nav-link:hover {
+        background-color: white; /* Change background color on hover */
+    }
+</style>
 	
 </head>
 <body>
@@ -17,7 +37,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand text-capitalize" href="#">
-            <img src="images/img7.jpg" width="40" height="40" alt="logo" loading="lazy" class="mr-2">
+            <img  width="40" height="40"   class="mr-2"><!--src="images/img7.jpg" alt="logo" loading="lazy"-->
             Add Doctor details</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
@@ -25,8 +45,11 @@
 <!--                <li class="nav-item">
                     <a class="nav-link" href="/getappointmentdetails"><i class="fa fa-hospital-o mr-1" aria-hidden="true"></i>My Appointments</a>
                 </li> -->
-                <button href="/admin_login" type="button" class="btn btn-warning ml-4">
-                    <i class="fa fa-sign-out"></i>Logout</button>
+              <!--  <button href="/admin_login" type="button" class="btn btn-warning ml-4">
+                    <i class="fa fa-sign-out"></i>Logout</button>-->
+                <li class="nav-item active" >
+                    <a class="nav-link" href="/admin_login">Logout</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -84,7 +107,7 @@
                                                             <div class="col">
                                                                 <div class="form-group">
                                                                     <label>Specialization</label>
-                                                                    <input id="specialization" class="form-control" type="text" name="specialization" placeholder="Specialization" maxLength="50" >
+                                                                    <input id="specialization" class="form-control" type="text" name="specialization" placeholder="Specialization" maxLength="50" required>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -113,6 +136,12 @@ function validateForm() {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const phoneNumber = document.getElementById('phonenumber').value;
+    const specialization = document.getElementById('specialization').value;
+
+     if (!doctorname || !email || !password || !phonenumber || !specialization) {
+            alert('Please fill in all fields');
+            event.preventDefault(); // Prevent form submission
+            return false;
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
@@ -121,7 +150,10 @@ function validateForm() {
         alert('Username should contain alphabetic characters only.');
         return false;
     }
-
+     if (!/^[A-Za-z]+$/.test(specialization)) {
+        alert('Fill out the speacialization field');
+        return false;
+    }
     if (!emailRegex.test(email)) {
         alert('Please enter a valid email address.');
         return false;
@@ -138,6 +170,10 @@ function validateForm() {
         alert('Please enter a valid phone number starting with 7, 8, or 9 and containing exactly 10 digits.');
         return false;
     }
+ /*   if (specialization.trim() === "") {
+        alert('Please fill out the Specialization field.');
+        return false;
+    }*/
 
     return true;
 }

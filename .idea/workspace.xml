@@ -5,47 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9a77f58-d680-4334-9b60-441415876721" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_error_login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_reply.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/doctor_error_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error_appointment.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error_doctor_details.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/error_patient_login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/templates/success_doctor.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/Vijay2Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/Vijay2Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/AdminController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/AppointmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/AppointmentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/DoctorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/DoctorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/model/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/model/Appointment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/repository/AppointmentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/repository/AppointmentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/repository/DoctorRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/repository/DoctorRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/service/AppointmentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/service/AppointmentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/service/AppointmentServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/service/AppointmentServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/service/DoctorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/service/DoctorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/service/DoctorServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/service/DoctorServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admindashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admindashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vijay2/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/vijay2/service/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/error_signup.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/adddoctordetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/adddoctordetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin_reply.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin_reply.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/appointment_booking.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/appointment_booking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/appointments_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/appointments_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/appointments_list_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/appointments_list_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patient_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patient_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patient_signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patient_signup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/controller/AdminController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/controller/AdminController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/doctor_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/doctor_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/patient_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/patient_dashboard.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/controller/AppointmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/controller/AppointmentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/controller/DoctorController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/controller/DoctorController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/model/Appointment.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/model/Appointment.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/repository/AppointmentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/repository/AppointmentRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/repository/DoctorRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/repository/DoctorRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/service/AppointmentService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/service/AppointmentService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/service/AppointmentServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/service/AppointmentServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/service/DoctorService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/service/DoctorService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/vijay2/service/DoctorServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/vijay2/service/DoctorServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/admindashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/admindashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/static/error_signup.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/adddoctordetails.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/adddoctordetails.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin_login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/admin_reply.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/admin_reply.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/templates/appointment_booking.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/appointment_booking.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/appointments_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/appointments_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/appointments_list_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/appointments_list_admin.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/patient_login.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patient_login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/templates/patient_signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patient_signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/doctor_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/doctor_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/main_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/main_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/templates/patient_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/templates/patient_dashboard.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,10 +93,15 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/elcot/Desktop/hospital-management&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/hospital-management&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\hospital-management\src\main\resources\templates" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

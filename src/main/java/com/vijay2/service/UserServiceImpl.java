@@ -6,6 +6,7 @@ import com.vijay2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.Principal;
 import java.util.List;
 
 @Service
@@ -35,13 +36,12 @@ public class UserServiceImpl implements UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
-    /*    @Override
-    public User saveUser(User user) {
-        return userRepository.save(user);
-    }
 
-    @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
-    } */
+   /* @Override
+    public User getLoggedInUser() {
+        Principal principal = SecurityContextHolder.getContext().getAuthentication();
+        String username = principal.getName();
+        return userRepository.findByUsername(username);
+    }*/
+
 }

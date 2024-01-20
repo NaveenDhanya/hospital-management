@@ -11,8 +11,5 @@ public interface UserService {
     boolean isEmailExists(String email);
     void createUser(String username, String email, String password);
     User findByUsername(String username);
-    /*
-    User saveUser(User user);
 
-    List<User> getAllUsers(); */
 }

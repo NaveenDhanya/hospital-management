@@ -3,28 +3,30 @@ package com.vijay2.controller;
 import com.vijay2.model.User;
 import com.vijay2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 public class UserController {
     @Autowired
     private UserService userService;
 
-
     @GetMapping("/")
     public String home() {
         return "main_dashboard.html";
     }
-
     @GetMapping("/main_login")
     public String mainlogin() {
         return "main_login.html";
     }
-
     @GetMapping("/patient_signup")
     public String patientsignup() {
         return "patient_signup.html";
@@ -71,7 +73,7 @@ public class UserController {
         } else {
             // If credentials do not match, return to the login page with an error message
             model.addAttribute("error", "Invalid username or password");
-            return "error_signup.html";
+            return "error_patient_login.html";
         }
     }
 
@@ -85,4 +87,17 @@ public class UserController {
     public String emergency() {
         return "emergency_helpline.html";
     }
+
+   /* @GetMapping("/getLoggedInUsername")
+    public ResponseEntity<Map<String, String>> getLoggedInUsername() {
+        User loggedInUser = userService.findByUsername();
+
+        if (loggedInUser != null) {
+            Map<String, String> response = new HashMap<>();
+            response.put("username", loggedInUser.getUsername());
+            return ResponseEntity.ok(response);
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+    }*/
 }

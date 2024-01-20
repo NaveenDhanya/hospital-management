@@ -9,8 +9,9 @@ import java.util.List;
 
 public interface DoctorRepository extends JpaRepository<Doctor, Long> {
 
-    boolean existsByDoctorname(String doctorname);
+//    boolean existsByDoctorname(String doctorname);
     boolean existsByEmail(String email);
+    boolean existsByPhonenumber(String phonenumber);
     Doctor findByEmail(String email);
 /*    Doctor findByEmail(String email);
 

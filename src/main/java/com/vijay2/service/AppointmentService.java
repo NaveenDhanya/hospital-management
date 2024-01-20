@@ -10,8 +10,9 @@ import java.util.concurrent.atomic.LongAccumulator;
 public interface AppointmentService {
     List<Appointment> getAllAppointments();
 
-    boolean isUsernameExists(String username);
+ //   boolean isUsernameExists(String username);
     boolean isEmailExists(String email);
+    boolean isPhonenumberExists(Long phonenumber);
     void createAppointment(String username, String email, Long phonenumber, String specialization, LocalDate appointmentdate, LocalTime appointmenttime, String symptoms);
 
 }

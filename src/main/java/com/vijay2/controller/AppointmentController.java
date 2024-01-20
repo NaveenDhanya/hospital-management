@@ -55,13 +55,17 @@ public class AppointmentController {
                          @RequestParam("symptoms") String symptoms,
                          Model model) {
         // Check if username or email already exists in the database using UserService
-        if (appointmentService.isUsernameExists(username)) {
+        /*if (appointmentService.isUsernameExists(username)) {
             model.addAttribute("error", "Username already exists");
             return "error_signup"; // Redirect back to signup page with an error message
-        }
+        } */
         if (appointmentService.isEmailExists(email)) {
             model.addAttribute("error", "Email already exists");
-            return "error_signup"; // Redirect back to signup page with an error message
+            return "error_appointment"; // Redirect back to signup page with an error message
+        }
+        if (appointmentService.isPhonenumberExists(phonenumber)) {
+            model.addAttribute("error", "Phonenumber already exists");
+            return "error_appointment"; // Redirect back to signup page with an error message
         }
         // If username and email are unique, create a new user using UserService
       //  appointmentService.createAppointment(username, email, phonenumber, specialization, appointmentdate, appointmenttime, symptoms);

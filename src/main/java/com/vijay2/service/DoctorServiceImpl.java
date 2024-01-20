@@ -15,12 +15,16 @@ public class DoctorServiceImpl implements DoctorService {
         this.doctorRepository = doctorRepository;
     }
 
-    public boolean isDoctornameExists(String doctorname) {
-        return doctorRepository.existsByDoctorname(doctorname);
-    }
+ //   public boolean isDoctornameExists(String doctorname) {
+//        return doctorRepository.existsByDoctorname(doctorname);
+ //   }
     @Override
     public boolean isEmailExists(String email) {
         return doctorRepository.existsByEmail(email);
+    }
+    @Override
+    public boolean isPhonenumberExists(String phonenumber) {
+        return doctorRepository.existsByPhonenumber(phonenumber);
     }
     @Override
     public void createDoctor(String doctorname, String email, String password, String phonenumber, String specialization) {

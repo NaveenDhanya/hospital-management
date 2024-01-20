@@ -23,13 +23,17 @@ public class AppointmentServiceImpl implements AppointmentService {
     @Override
     public List<Appointment> getAllAppointments() {return appointmentRepository.findAll();}
 
-    @Override
-    public boolean isUsernameExists(String username) {
-        return appointmentRepository.existsByUsername(username);
-    }
+   // @Override
+   // public boolean isUsernameExists(String username) {
+    //    return appointmentRepository.existsByUsername(username);
+    //}
     @Override
     public boolean isEmailExists(String email) {
         return appointmentRepository.existsByEmail(email);
+    }
+    @Override
+    public boolean isPhonenumberExists(Long phonenumber) {
+        return appointmentRepository.existsByPhonenumber(phonenumber);
     }
     @Override
     public void createAppointment(String username, String email, Long phonenumber, String specialization, LocalDate appointmentdate,LocalTime appointmenttime, String symptoms) {
